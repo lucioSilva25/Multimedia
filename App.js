@@ -8,7 +8,9 @@ import * as ImagePicker from 'expo-image-picker';
 
 const Video1 = () => {
     const video = React.useRef(null);
+    const video1 = React.useRef(null);
     const [status, setStatus] = React.useState({});
+    const [status1, setStatus1] = React.useState({});
     const [image, setImage] = useState(null);
 
     const pickImage = async () => {
@@ -54,8 +56,25 @@ const Video1 = () => {
        
         <View >
       <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-    </View>   
+      <Video
+    ref={video1}
+    style={styles.video}
+    source={{uri: image}}
+    useNativeControls
+    resizeMode="contain"
+    isLooping
+    onPlaybackStatusUpdate={status1 => setStatus1(() => status1)}
+    />
+   
+    </View> 
+    <View style={styles.buttons}>
+    <Button
+    title={status1.isPlaying ? 'Pause' : 'Play'}
+            onPress={() =>
+              status1.isPlaying ? video1.current.pauseAsync() : video1.current.playAsync()
+            }
+          />
+          </View>  
       </View>
     );
   }
