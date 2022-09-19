@@ -32,7 +32,7 @@ const Video1 = () => {
       
       <View style={styles.container}>
           <Image source={logo}style={styles.logo} />
-          <Text style={styles.titleText}> Big Buck Bunny </Text>
+          <Text style={styles.titleText}> Public Video  </Text>
          
   <Video
     ref={video}
@@ -53,7 +53,7 @@ const Video1 = () => {
             }
           />
           </View>
-       
+          <Text style={styles.titleText}> Local Video  </Text>
         <View >
       <Button title="Pick an image from camera roll" onPress={pickImage} />
       <Video
